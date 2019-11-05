@@ -30,7 +30,7 @@ body[cal="1"]{
 }
 
 main{
-	margin:auto;
+	margin:0 auto 1em;
 	width: 100%;
 	max-width: 420px;
 	height: var(--mainHeight);
@@ -180,12 +180,16 @@ input#input_menuAmout {
 	font-size: .8rem;
 	background: #e7ffcc;
 	color: #81b814;
-	padding: 0 .5em;
-	border-radius: 5px;
+	padding: .1em .5em .4em;
+	border-radius: 3px;
 	font-weight: bold;
 	margin-left: 1em;
 	display: none;
 }
 .people-main-list[pay="1"] .paid-label{
 	display: inline-block;
+}
+.menu-pay-by .paid-label{
+	display: inline-block;
+	margin: .1em;
 }

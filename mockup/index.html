@@ -117,28 +117,43 @@
 				</theboxes>
 				<theboxes class="middle spacing-l -clip size-l cl-vblack">
 					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
-						น้ำแข็ง
+						<div>น้ำแข็ง</div>
+						<div class="menu-pay-by">
+							<span class="paid-label">ทุกคน</span>
+						</div>
 					</inner></box>
 					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						200
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
 					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
-						โปรเบียร์
+						<div>โปรเบียร์</div>
+						<div class="menu-pay-by">
+							<span class="paid-label">จาบอน</span>
+							<span class="paid-label">แองเจิล</span>
+						</div>
 					</inner></box>
 					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						650
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
 					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
-						โปรเหล้า
+						<div>โปรเหล้า</div>
+						<div class="menu-pay-by">
+							<span class="paid-label">กอล์ฟ</span>
+							<span class="paid-label">ภพ</span>
+						</div>
 					</inner></box>
 					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						450
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
 					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
-						มิกเซอร์
+						<div>มิกเซอร์</div>
+						<div class="menu-pay-by">
+							<span class="paid-label">กอล์ฟ</span>
+							<span class="paid-label">ภพ</span>
+						</div>
 					</inner></box>
 					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						180
@@ -148,7 +163,19 @@
 				<sp class="vl"></sp>
 				<theboxes class="top spacing -clip">
 					<box col="9" mob="9"><inner class="">
-						<input type="text" id="input_peopleName" class="ffont input wide cl-black" placeholder="ระบุรายการ">
+						<input type="text" id="input_menuName" class="ffont input wide cl-black" placeholder="ระบุรายการ" list="list_menuName" autocomplete="off">
+						<datalist id="list_menuName">
+							<option>อาหาร</option>
+							<option>น้ำอัดลม</option>
+							<option>น้ำเปล่า</option>
+							<option>น้ำแข็ง</option>
+							<option>เบียร์ (โปร)</option>
+							<option>เหล้า (โปร)</option>
+							<option>เบียร์</option>
+							<option>เหล้า</option>
+							<option>เหล้าปั่น</option>
+							<option>มิกเซอร์</option>
+						</datalist>
 					</inner></box>
 					<box col="3" mob="3"><inner class="">
 						<div class="btn t-center wide b7 bg-amber hover-bg-amber-6">
