@@ -1,0 +1,140 @@
+@font-face {
+	font-family: 'Maledpan';
+	src: url('maledpan-regular-webfont.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Maledpan';
+	src: url('maledpan-bold-webfont.woff2') format('woff2');
+	font-weight: bold;
+	font-style: normal;
+}
+
+body{
+	--mainHeight : unset;
+	--mainOverflow : unset;
+	--calHeight : 0px;
+}
+body[popup="1"]{
+	--mainHeight : 100vh;
+	--mainOverflow : hidden;
+}
+body[cal="1"]{
+	--calHeight : 200px;
+}
+.ffont{
+	font-family: 'Maledpan' !important;
+}
+
+main{
+	margin:auto;
+	width: 100%;
+	max-width: 420px;
+	height: var(--mainHeight);
+	overflow: var(--mainOverflow);
+}
+.btn{
+	cursor: pointer;
+}
+.quick-add{
+	position: fixed;
+	right: .5em;
+	bottom: .5em;
+	width: 2em;
+	line-height: 2em;
+	text-align: center;
+	color:white;
+	font-size: 1.5em;
+}
+#people{
+	display: none;
+}
+#popup_menu{
+	display: none;
+	background: #0008;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 500;
+	height: calc(100% - var(--calHeight));
+	overflow: auto;
+	transition: height .2s;
+
+}
+#popup_menu[show="1"]{
+	display: flex;
+}
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"] {
+	border: 0;
+	border-bottom: 1px solid #aaa;
+	border-radius: 0;
+	padding-left: 0em;
+	padding-right: 0em;
+}
+input::placeholder{
+	color:#ddd;
+}
+input:focus::placeholder{
+	color: transparent;
+}
+.people-list-wrap{
+	display: flex;
+	flex-flow: row wrap;
+}
+.people-list{
+	padding: .5em 1em;
+	border-radius: 5px;
+	background-color: #eee;
+	margin: .1em;
+	color: #666;
+}
+
+.people-list i::before{
+	content: "\f067";
+}  
+
+.people-list[pay="1"]{
+	background: #FFC107;
+	color: black;
+}
+
+.people-list[pay="1"]>i::before{
+	content: "\f00c";
+}
+#calculator {
+	transition: height .2s;
+    position: fixed;
+    height: var(--calHeight);
+    width: 100%;
+    left:0;
+    bottom: 0;
+    z-index: 1000;
+    background: #fff;
+}
+#cal_operator{
+	display: flex;
+	flex-flow: row wrap;
+	text-align: center;
+}
+#cal_operator div{
+	width: 100%;
+	background: #0001;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#cal_operator div#op_equals{
+	background: #0002;
+}
+.calpad{
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#cal_operator div:active, .calpad:active{
+	background: #0003 !important;
+}

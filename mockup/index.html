@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CheckBill</title>
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Mitr:400,600" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="http://jabont.com/jayss/jayss-custom.php?ggfont=Mitr&font=333&bg=fff&cl=4527A0,5E35B1,7E57C2"> -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="function.js"></script>
+</head>
+<body popup="1" cal="1">
+	<main class="bg-white ffont shadow">
+		<section id="header" class="padding-rm ">
+			<theboxes class="bottom spacing-rm -clip">
+				<box col="4" mob="4"><inner class="">
+					<div class="h8">จำนวนคน</div>
+					<div class="h4">5</div>
+				</inner></box>
+				<box col="5" mob="5"><inner class=" ">
+					<div class="h8">ราคารวม</div>
+					<div class="h4">2,108</div>
+				</inner></box>
+				<box col="3" mob="3"><inner class="  t-right">
+					<div class="size-m upper b7">ref 1b0501</div>
+					<sp class="s"></sp>
+					<img src="https://via.placeholder.com/100x100" class="wide">
+					<sp class="s"></sp>
+				</inner></box>
+			</theboxes>
+		</section>
+		<sp class="px bg-smoke"></sp>
+		<section id="tab" class="t-center b7 size-l">
+			<theboxes class="top -clip" boxing="2" mob="2">
+				<box col=""><inner class="" onclick="switchTab('menu')">
+					<div class="tabName padding cl-amber">
+						<i class="size-m fas fa-stream"></i>&nbsp;&nbsp;
+						<span>รายการ</span>
+					</div>
+					<sp class="tabLine xs bg-amber"></sp>
+				</inner></box>
+				<box col=""><inner class="" onclick="switchTab('people')">
+					<div class="tabName padding cl-amber cl-grey">
+						<i class="size-m fas fa-user-friends"></i>&nbsp;&nbsp;
+						<span>คนจ่าย</span>
+					</div>
+					<sp class="tabLine xs bg-amber bg-grey-2"></sp>
+				</inner></box>
+			</theboxes>
+		</section>
+		<section id="people">
+			<div class="padding-rm">
+				<theboxes class="top spacing-l -clip size-m cl-grey">
+					<box col="10" mob="10"><inner class="">
+						ชื่อคน
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						ยอด
+					</inner></box>
+				</theboxes>
+				<theboxes class="top spacing-l -clip size-l cl-vblack">
+					<box col="10" mob="10"><inner class="">
+						จาบอน
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						915
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="10" mob="10"><inner class="">
+						กอล์ฟ
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						120
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="10" mob="10"><inner class="">
+						แองเจิล
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						820
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="10" mob="10"><inner class="">
+						ภพ
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						20
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					
+				</theboxes>
+				<sp class="vl"></sp>
+				<theboxes class="top spacing -clip">
+					<box col="9" mob="9"><inner class="">
+						<input type="text" id="input_peopleName" class="ffont input wide cl-black" placeholder="ระบุชื่อ">
+					</inner></box>
+					<box col="3" mob="3"><inner class="">
+						<div class="btn t-center wide b7 bg-amber hover-bg-amber-6">
+							เพิ่ม
+						</div>
+					</inner></box>
+				</theboxes>
+			</div>
+		</section>
+		<section id="menu">
+			<div class="padding-rm">
+				<theboxes class="top spacing-l -clip size-m cl-grey">
+					<box col="10" mob="10"><inner class="">
+						ชื่อรายการ
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						ราคา
+					</inner></box>
+				</theboxes>
+				<theboxes class="top spacing-l -clip size-l cl-vblack">
+					<box col="10" mob="10"><inner class="">
+						น้ำแข็ง
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						200
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="10" mob="10"><inner class="">
+						โปรเบียร์
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						650
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="10" mob="10"><inner class="">
+						โปรเหล้า
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						450
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="10" mob="10"><inner class="">
+						มิกเซอร์
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						180
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+				</theboxes>
+				<sp class="vl"></sp>
+				<theboxes class="top spacing -clip">
+					<box col="9" mob="9"><inner class="">
+						<input type="text" id="input_peopleName" class="ffont input wide cl-black" placeholder="ระบุรายการ">
+					</inner></box>
+					<box col="3" mob="3"><inner class="">
+						<div class="btn t-center wide b7 bg-amber hover-bg-amber-6">
+							เพิ่ม
+						</div>
+					</inner></box>
+				</theboxes>
+			</div>
+		</section>
+
+		<sp class="m"></sp>
+	</main>
+	<div class="quick-add bg-amber circle shadow">
+		<i class="fas fa-plus"></i>
+	</div>
+
+	<div id="popup_menu" show="1" class="padding-rm v-middle-flex ffont" >
+		<div class="bg-white round padding-rm to-center">
+			<theboxes class="top spacing -clip">
+				<box col="2" mob="2"><inner class=""></inner></box>
+				<box col="8" mob="8"><inner class="">
+					<div class="h9 cl-grey">ข้อมูลรายการ</div>
+					<div class="h8 cl-amber b7">โปรเบียร์</div>
+				</inner></box>
+				<box col="2" mob="2"><inner class="">
+					<div class="h9 cl-red-4">ลบ</div>
+				</inner></box>
+			</theboxes>
+			<div class="t-left">
+				<theboxes class="top spacing -clip">
+					<box col="12" mob="12"><inner class="">
+						<input type="tel" id="input_menuAmout" class="t-center ffont input wide cl-black size-xl" placeholder="ระบุราคา" readonly="readonly" onclick="toggleCalPanel('open')">
+						<div id="calculator" class="">
+							<theboxes class="top -clip">
+								<box col="9.5" mob="9.5"><inner class="">
+									<theboxes class="top -clip t-center b7" boxing="3" mob="3">
+										<box col=""><inner class="calpad">
+											7
+										</inner></box>
+										<box col=""><inner class="calpad">
+											8
+										</inner></box>
+										<box col=""><inner class="calpad">
+											9
+										</inner></box>
+										<box col=""><inner class="calpad">
+											4
+										</inner></box>
+										<box col=""><inner class="calpad">
+											5
+										</inner></box>
+										<box col=""><inner class="calpad">
+											6
+										</inner></box>
+										<box col=""><inner class="calpad">
+											1
+										</inner></box>
+										<box col=""><inner class="calpad">
+											2
+										</inner></box>
+										<box col=""><inner class="calpad">
+											3
+										</inner></box>
+										<box col=""><inner class="calpad upper">
+											clear
+										</inner></box>
+										<box col=""><inner class="calpad">
+											0
+										</inner></box>
+										<box col=""><inner class="calpad">
+											<i class="fas fa-backspace"></i>
+										</inner></box>
+									</theboxes>
+									<div class="size-l b7 t-center bg-lightgreen cl-white upper calpad" onclick="toggleCalPanel('close')">
+										ok
+									</div>
+								</inner></box>
+								<box col="2.5" mob="2.5"><inner id="cal_operator">
+									<div id="op_divide"><i class="fas fa-divide"></i></div>
+									<div id="op_times"><i class="fas fa-times"></i></div>
+									<div id="op_minus"><i class="fas fa-minus"></i></div>
+									<div id="op_plus"><i class="fas fa-plus"></i></div>
+									<div id="op_equals"><i class="fas fa-equals"></i></div>
+
+								</inner></box>
+							</theboxes>
+						</div>
+					</inner></box>
+				</theboxes>
+				<sp class="m"></sp>
+				<div class="h9 cl-grey">
+					<i class="size-m fas fa-user-friends"></i>&nbsp;&nbsp;
+					<span>คนจ่าย</span> <span>(2 คน คนละ 120 บาท)</span>
+				</div>
+				<sp class="m"></sp>
+				<div class="people-list-wrap size-m b7">
+					<span class="people-list" pay="1"><i class="fas size-xs"></i>&nbsp; จาบอน</span>
+					<span class="people-list" pay="0"><i class="fas size-xs"></i>&nbsp; กอล์ฟ</span>
+					<span class="people-list" pay="1"><i class="fas size-xs"></i>&nbsp; แองเจิล</span>
+					<span class="people-list" pay="0"><i class="fas size-xs"></i>&nbsp; ภพ</span>
+				</div>
+				<sp class="l"></sp>
+				<div class="size-m">
+					<theboxes class="top spacing -clip">
+						<box col="9" mob="9"><inner class="">
+							<input type="text" id="input_peopleName2" class="ffont input wide cl-black" placeholder="เพิ่มชื่อคนจ่าย">
+						</inner></box>
+						<box col="3" mob="3"><inner class="">
+							<div class="btn t-center wide b7 bg-grey ">
+								เพิ่ม
+							</div>
+						</inner></box>
+					</theboxes>
+				</div>
+			</div>
+			<sp class="rm"></sp>
+			<div class="btn t-center wide b7 bg-amber hover-bg-amber-6 ">
+				ยืนยัน
+			</div>
+		</div>
+	</div>
+</body>
+</html>
