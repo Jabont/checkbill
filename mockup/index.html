@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="function.js"></script>
 </head>
-<body popup="1" cal="1">
+<body popup="0" cal="0">
 	<main class="bg-white ffont shadow">
 		<section id="header" class="padding-rm ">
 			<theboxes class="bottom spacing-rm -clip">
@@ -61,32 +61,32 @@
 						ยอด
 					</inner></box>
 				</theboxes>
-				<theboxes class="top spacing-l -clip size-l cl-vblack">
-					<box col="10" mob="10"><inner class="">
-						จาบอน
+				<theboxes class="middle spacing-l -clip size-l cl-vblack">
+					<box col="10" mob="10"><inner class="people-main-list" pay="1" onclick="switchPay(this)">
+						จาบอน <span class="paid-label">จ่ายแล้ว</span>
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('people','open')"><inner class="t-right">
 						915
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
-					<box col="10" mob="10"><inner class="">
-						กอล์ฟ
+					<box col="10" mob="10"><inner class="people-main-list" pay="1" onclick="switchPay(this)">
+						กอล์ฟ <span class="paid-label">จ่ายแล้ว</span>
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('people','open')"><inner class="t-right">
 						120
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
-					<box col="10" mob="10"><inner class="">
-						แองเจิล
+					<box col="10" mob="10"><inner class="people-main-list" pay="0" onclick="switchPay(this)">
+						แองเจิล <span class="paid-label">จ่ายแล้ว</span>
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('people','open')"><inner class="t-right">
 						820
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
-					<box col="10" mob="10"><inner class="">
-						ภพ
+					<box col="10" mob="10"><inner class="people-main-list" pay="1" onclick="switchPay(this)">
+						ภพ <span class="paid-label">จ่ายแล้ว</span>
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('people','open')"><inner class="t-right">
 						20
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
@@ -115,32 +115,32 @@
 						ราคา
 					</inner></box>
 				</theboxes>
-				<theboxes class="top spacing-l -clip size-l cl-vblack">
-					<box col="10" mob="10"><inner class="">
+				<theboxes class="middle spacing-l -clip size-l cl-vblack">
+					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
 						น้ำแข็ง
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						200
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
-					<box col="10" mob="10"><inner class="">
+					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
 						โปรเบียร์
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						650
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
-					<box col="10" mob="10"><inner class="">
+					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
 						โปรเหล้า
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						450
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
-					<box col="10" mob="10"><inner class="">
+					<box col="10" mob="10" onclick="togglePopup('menu','open')"><inner class="">
 						มิกเซอร์
 					</inner></box>
-					<box col="2" mob="2"><inner class="t-right">
+					<box col="2" mob="2" onclick="togglePopup('menu','open')"><inner class="t-right">
 						180
 					</inner></box>
 					<sp class="px bg-smoke"></sp>
@@ -165,12 +165,12 @@
 		<i class="fas fa-plus"></i>
 	</div>
 
-	<div id="popup_menu" show="1" class="padding-rm v-middle-flex ffont" >
-		<div class="bg-white round padding-rm to-center">
+	<div id="popup_menu" show="0" class="padding-rm v-middle-flex ffont popupWrap" >
+		<div class="round padding-rm to-center popup popup_menu_wrap">
 			<theboxes class="top spacing -clip">
 				<box col="2" mob="2"><inner class=""></inner></box>
 				<box col="8" mob="8"><inner class="">
-					<div class="h9 cl-grey">ข้อมูลรายการ</div>
+					<div class="h9 cl-grey">รายการ</div>
 					<div class="h8 cl-amber b7">โปรเบียร์</div>
 				</inner></box>
 				<box col="2" mob="2"><inner class="">
@@ -180,61 +180,63 @@
 			<div class="t-left">
 				<theboxes class="top spacing -clip">
 					<box col="12" mob="12"><inner class="">
-						<input type="tel" id="input_menuAmout" class="t-center ffont input wide cl-black size-xl" placeholder="ระบุราคา" readonly="readonly" onclick="toggleCalPanel('open')">
-						<div id="calculator" class="">
-							<theboxes class="top -clip">
-								<box col="9.5" mob="9.5"><inner class="">
-									<theboxes class="top -clip t-center b7" boxing="3" mob="3">
-										<box col=""><inner class="calpad">
-											7
-										</inner></box>
-										<box col=""><inner class="calpad">
-											8
-										</inner></box>
-										<box col=""><inner class="calpad">
-											9
-										</inner></box>
-										<box col=""><inner class="calpad">
-											4
-										</inner></box>
-										<box col=""><inner class="calpad">
-											5
-										</inner></box>
-										<box col=""><inner class="calpad">
-											6
-										</inner></box>
-										<box col=""><inner class="calpad">
-											1
-										</inner></box>
-										<box col=""><inner class="calpad">
-											2
-										</inner></box>
-										<box col=""><inner class="calpad">
-											3
-										</inner></box>
-										<box col=""><inner class="calpad upper">
-											clear
-										</inner></box>
-										<box col=""><inner class="calpad">
-											0
-										</inner></box>
-										<box col=""><inner class="calpad">
-											<i class="fas fa-backspace"></i>
-										</inner></box>
-									</theboxes>
-									<div class="size-l b7 t-center bg-lightgreen cl-white upper calpad" onclick="toggleCalPanel('close')">
-										ok
-									</div>
-								</inner></box>
-								<box col="2.5" mob="2.5"><inner id="cal_operator">
-									<div id="op_divide"><i class="fas fa-divide"></i></div>
-									<div id="op_times"><i class="fas fa-times"></i></div>
-									<div id="op_minus"><i class="fas fa-minus"></i></div>
-									<div id="op_plus"><i class="fas fa-plus"></i></div>
-									<div id="op_equals"><i class="fas fa-equals"></i></div>
+						<input type="text" id="input_menuAmout" class="t-center ffont input wide cl-black bg-white size-xl" placeholder="ระบุราคา" onclick="toggleCalPanel('open')" readonly="readonly">
+						<div id="calculator">
+							<div class="popup bg-white">
+								<theboxes class="top -clip">
+									<box col="9.5" mob="9.5"><inner class="">
+										<theboxes class="top -clip t-center b7" boxing="3" mob="3">
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												7
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												8
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												9
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												4
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												5
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												6
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												1
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												2
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												3
+											</inner></box>
+											<box col="" onclick="calClear()"><inner class="calpad upper">
+												clear
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calInsert(this)">
+												0
+											</inner></box>
+											<box col=""><inner class="calpad" onclick="calBackspace()">
+												<i class="fas fa-backspace"></i>
+											</inner></box>
+										</theboxes>
+										<div class="size-l b7 t-center bg-lightgreen cl-white upper calpad" onclick="calSubmit()" id="calOk" >
+											ok
+										</div>
+									</inner></box>
+									<box col="2.5" mob="2.5"><inner id="cal_operator">
+										<div id="op_divide" onclick="calAddOp('/');"><i class="fas fa-divide"></i></div>
+										<div id="op_times" onclick="calAddOp('*');"><i class="fas fa-times"></i></div>
+										<div id="op_minus" onclick="calAddOp('-');"><i class="fas fa-minus"></i></div>
+										<div id="op_plus" onclick="calAddOp('+');"><i class="fas fa-plus"></i></div>
+										<div id="op_equals" onclick="calEq();"><i class="fas fa-equals"></i></div>
 
-								</inner></box>
-							</theboxes>
+									</inner></box>
+								</theboxes>
+							</div>
 						</div>
 					</inner></box>
 				</theboxes>
@@ -245,10 +247,10 @@
 				</div>
 				<sp class="m"></sp>
 				<div class="people-list-wrap size-m b7">
-					<span class="people-list" pay="1"><i class="fas size-xs"></i>&nbsp; จาบอน</span>
-					<span class="people-list" pay="0"><i class="fas size-xs"></i>&nbsp; กอล์ฟ</span>
-					<span class="people-list" pay="1"><i class="fas size-xs"></i>&nbsp; แองเจิล</span>
-					<span class="people-list" pay="0"><i class="fas size-xs"></i>&nbsp; ภพ</span>
+					<span class="people-list" pay="1" onclick="switchPay(this)"><i class="fas size-xs"></i>&nbsp; จาบอน</span>
+					<span class="people-list" pay="0" onclick="switchPay(this)"><i class="fas size-xs"></i>&nbsp; กอล์ฟ</span>
+					<span class="people-list" pay="1" onclick="switchPay(this)"><i class="fas size-xs"></i>&nbsp; แองเจิล</span>
+					<span class="people-list" pay="0" onclick="switchPay(this)"><i class="fas size-xs"></i>&nbsp; ภพ</span>
 				</div>
 				<sp class="l"></sp>
 				<div class="size-m">
@@ -265,8 +267,93 @@
 				</div>
 			</div>
 			<sp class="rm"></sp>
-			<div class="btn t-center wide b7 bg-amber hover-bg-amber-6 ">
-				ยืนยัน
+			<div class="btn t-center wide b7 bg-amber hover-bg-amber-6 " onclick="togglePopup('menu','close')">
+				ปิด
+			</div>
+		</div>
+	</div>
+
+
+	<div id="popup_people" show="0" class="padding-rm v-middle-flex ffont popupWrap" >
+		<div class="bg-white round padding-rm to-center popup">
+			<theboxes class="top spacing -clip">
+				<box col="2" mob="2"><inner class=""></inner></box>
+				<box col="8" mob="8"><inner class="">
+					<div class="h9 cl-grey">ยอดชำระ</div>
+					<div class="h8 cl-amber b7">จาบอน</div>
+				</inner></box>
+				<box col="2" mob="2"><inner class="">
+					<div class="h9 cl-red-4">ลบ</div>
+				</inner></box>
+			</theboxes>
+			<div class="t-left">
+				<sp class="l"></sp>
+				<theboxes class="middle spacing -clip size-l cl-vblack">
+					<box col="8" mob="8"><inner class="">
+						<div class="menu-list" pay="1" onclick="switchPay(this)">
+							<i class="fas size-s"></i>&nbsp; น้ำแข็ง
+						</div>
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right cl-grey size-m">
+						200
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						20
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="8" mob="8"><inner class="">
+						<div class="menu-list" pay="1" onclick="switchPay(this)">
+							<i class="fas size-s"></i>&nbsp; โปรเบียร์
+						</div>
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right cl-grey size-m">
+						650
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						65
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="8" mob="8"><inner class="">
+						<div class="menu-list" pay="0" onclick="switchPay(this)">
+							<i class="fas size-s"></i>&nbsp; โปรเหล้า
+						</div>
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right cl-grey size-m">
+						450
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						-
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+					<box col="8" mob="8"><inner class="">
+						<div class="menu-list" pay="0" onclick="switchPay(this)">
+							<i class="fas size-s"></i>&nbsp; มิกเซอร์
+						</div>
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right cl-grey size-m">
+						180
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						-
+					</inner></box>
+					<sp class="px bg-smoke"></sp>
+				</theboxes>
+
+				
+				<sp class="l"></sp>
+				
+				<theboxes class="top spacing -clip size-m cl-grey">
+					<box col="8" mob="8"><inner class="">
+						<div class="h8 b7 cl-black ">ยอดรวม</div>
+					</inner></box>
+					<box col="4" mob="4"><inner class="t-right">
+						<div class="h8 b7 cl-black ">915</div>
+					</inner></box>
+				</theboxes>
+				<sp class="l"></sp>
+				<div class="btn t-center wide b7 bg-amber hover-bg-amber-6 " onclick="togglePopup('people','close')">
+					ปิด
+				</div>
 			</div>
 		</div>
 	</div>
