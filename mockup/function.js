@@ -123,6 +123,7 @@ function calEq(){
 	input_menuAmout.value = calAmout;
 }
 function calAddOp(op){
+	calEq();
 	calOperater = op;
 	calInsertNum(op);
 }

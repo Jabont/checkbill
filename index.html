@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CheckBill</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta charset=utf-8>
+	<meta name=description content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="https://jabont.com/jayss/jayss.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="shortcut icon" href="assets/fav.ico" />
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/icn-256.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/icn-256.png">
+	<link rel="apple-touch-icon" href="assets/icn-256.png">
+	<meta name="apple-mobile-web-app-title" content="CheckBill">
+	<meta name="theme-color" content="#03A9F4">
+	<link rel="manifest" href="manifest.json">
+
+	<!-- startup -->
+	<link href="splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+</head>
+<body popup="0" cal="0">
+	<main class="bg-white ffont shadow">
+		<section id="header" class="padding-rm ">
+			<theboxes class="bottom spacing-s -clip">
+				<box col="4" mob="4"><inner class="">
+					<div class="h8">จำนวนคน</div>
+					<div class="h4" id="peopleSize_wrap">0</div>
+				</inner></box>
+				<box col="5" mob="5"><inner class=" ">
+					<div class="h8">ราคารวม</div>
+					<div class="h4" id="price_wrap">0</div>
+				</inner></box>
+				<box col="3" mob="3"><inner class="  t-center">
+					<div class="size-s upper b7" id="qr_label">Add PrompPay</div>
+					<sp class="s"></sp>
+					<img src="assets/qr.png" class="qr" id="qr_pic" onclick="addQr()">
+					<sp class="s"></sp>
+				</inner></box>
+			</theboxes>
+		</section>
+		<sp class="px bg-smoke"></sp>
+		<section id="tab" class="t-center b7 size-l">
+			<theboxes class="top -clip" boxing="2" mob="2">
+				<box col=""><inner class="" onclick="switchTab('menu')">
+					<div class="tabName padding cl-lightblue">
+						<i class="size-m fas fa-stream"></i>&nbsp;&nbsp;
+						<span>รายการ</span>
+					</div>
+					<sp class="tabLine xs bg-lightblue"></sp>
+				</inner></box>
+				<box col=""><inner class="" onclick="switchTab('people')">
+					<div class="tabName padding cl-lightblue cl-grey">
+						<i class="size-m fas fa-user-friends"></i>&nbsp;&nbsp;
+						<span>คนจ่าย</span>
+					</div>
+					<sp class="tabLine xs bg-lightblue bg-grey-2"></sp>
+				</inner></box>
+			</theboxes>
+		</section>
+		<section id="people">
+			<div class="padding-rm">
+				<theboxes class="top spacing-l -clip size-m cl-grey">
+					<box col="8" mob="8"><inner class="">
+						ชื่อคน
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						จ่าย
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-center">
+						
+					</inner></box>
+				</theboxes>
+				<theboxes class="middle spacing-l -clip size-l cl-vblack" id="peopleList">
+					
+				</theboxes>
+				<sp class="vl"></sp>
+				<form onsubmit="return addPeople(input_peopleName)">
+					<theboxes class="top spacing -clip">
+						<box col="9" mob="9"><inner class="">
+							<input type="text" id="input_peopleName" class="ffont input wide cl-black" placeholder="ระบุชื่อ">
+						</inner></box>
+						<box col="3" mob="3"><inner class="">
+							<button class="ffont btn t-center wide b7 bg-lightblue hover-bg-lightblue-6 padding-vs-hzt">
+								เพิ่ม
+							</button>
+						</inner></box>
+					</theboxes>
+				</form>
+				<sp class="vl"></sp>
+				<span class="cl-red-8 size-m pointer" onclick="clearCache('people')">
+					ล้างรายชื่อคนจ่ายทั้งหมด
+				</span>
+			</div>
+		</section>
+		<section id="menu">
+			<div class="padding-rm">
+				<theboxes class="top spacing-l -clip size-m cl-grey">
+					<box col="8" mob="8"><inner class="">
+						ชื่อรายการ
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						ราคา
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						คนละ
+					</inner></box>
+				</theboxes>
+				<theboxes class="middle spacing-l -clip size-l cl-vblack" id="menuList">
+				</theboxes>
+				<sp class="vl"></sp>
+				<form onsubmit="return addMenu(input_menuName)">
+					<theboxes class="top spacing -clip">
+						<box col="9" mob="9"><inner class="">
+							<input type="text" id="input_menuName" class="ffont input wide cl-black" placeholder="ระบุรายการ" list="list_menuName" autocomplete="off">
+							<datalist id="list_menuName">
+								<option>อาหาร</option>
+								<option>น้ำอัดลม</option>
+								<option>น้ำเปล่า</option>
+								<option>น้ำแข็ง</option>
+								<option>เบียร์ (โปร)</option>
+								<option>เหล้า (โปร)</option>
+								<option>เบียร์</option>
+								<option>เหล้า</option>
+								<option>เหล้าปั่น</option>
+								<option>มิกเซอร์</option>
+							</datalist>
+						</inner></box>
+						<box col="3" mob="3"><inner class="">
+							<button class="ffont btn t-center wide b7 bg-lightblue hover-bg-lightblue-6 padding-vs-hzt">
+								เพิ่ม
+							</button>
+						</inner></box>
+					</theboxes>
+				</form>
+				<sp class="vl"></sp>
+				<span class="cl-red-8 size-m pointer" onclick="clearCache('menu')">
+					ล้างรายการทั้งหมด
+				</span>
+			</div>
+		</section>
+	</main>
+	<div class="disclaim">
+		<sp class="m"></sp>
+		<p class="ffont t-center padding-hzt size-m cl-smoke b7">*เศษทศนิยมจะถูกปัดขึ้นโดยอัตโนมัติ</p>
+	</div>
+	<div class="quick-add bg-lightblue circle shadow">
+		<i class="fas fa-plus"></i>
+	</div>
+
+	<div class="popupBg"></div>
+
+	<div id="popup_menu" show="0" class="padding-rm v-middle-flex ffont popupWrap" >
+		<div class="round padding-rm to-center popup popup_menu_wrap">
+			<theboxes class="top spacing -clip">
+				<box col="2" mob="2"><inner class=""></inner></box>
+				<box col="8" mob="8"><inner class="">
+					<div class="h9 cl-grey">รายการ</div>
+					<div class="h8 cl-lightblue b7" id="popupMenu_title"></div>
+				</inner></box>
+				<box col="2" mob="2"><inner class="">
+					<!-- <div class="h9 cl-red-4">ลบทิ้ง</div> -->
+				</inner></box>
+			</theboxes>
+			<div class="t-left">
+				<theboxes class="top spacing -clip">
+					<box col="12" mob="12"><inner class="">
+						<input type="text" id="input_menuAmout" class="t-center ffont input wide cl-black bg-white size-xl" placeholder="ระบุราคา" onclick="toggleCalPanel('open')" readonly="readonly">
+					</inner></box>
+				</theboxes>
+				<sp class="m"></sp>
+				<div class="h9 cl-grey">
+					<i class="size-m fas fa-user-friends"></i>&nbsp;&nbsp;
+					<span>คนจ่าย</span> <span>(<span id="peopleInMenu_wrap">0</span> คน คนละ <span id="menuAmout_wrap">0</span> บาท)</span> 
+				</div>
+				<sp class="m"></sp>
+				<div class="people-list-wrap size-m b7" id="peopleInMenuList_wrap">
+				</div>
+				<sp class="m"></sp>
+				<span class="ffont btn t-center wide b7 bg-white size-m v-middle-wrap" style="color: #03A9F4 !important;border: 1px solid;" onclick="checkPeoplePayAll()"><i class="fas size-xs fa-plus"></i>&nbsp;&nbsp;<span>เลือกทุกคน</span></span>
+				<sp class="l"></sp>
+				<div class="size-m">
+					<form onsubmit='return addPeople2(input_peopleName2)'>
+						<theboxes class="top spacing -clip">
+							<box col="9" mob="9"><inner class="">
+								<input type="text" id="input_peopleName2" class="ffont input wide cl-black" placeholder="เพิ่มชื่อคนจ่าย">
+							</inner></box>
+							<box col="3" mob="3"><inner class="">
+								<button class="ffont btn t-center wide b7 bg-grey padding-vs-hzt">
+									เพิ่ม
+								</button>
+							</inner></box>
+						</theboxes>
+					</form>
+				</div>
+			</div>
+			<sp class="rm"></sp>
+			<div class="btn t-center wide b7 bg-lightblue hover-bg-lightblue-6 " onclick="menuPopupClose()">
+				ตกลง
+			</div>
+		</div>
+	</div>
+
+
+	<div id="popup_people" show="0" class="padding-rm v-middle-flex ffont popupWrap" >
+		<div class="bg-white round padding-rm to-center popup">
+			<theboxes class="top spacing -clip">
+				<box col="2" mob="2"><inner class=""></inner></box>
+				<box col="8" mob="8"><inner class="">
+					<div class="h9 cl-grey">ยอดชำระ</div>
+					<div class="h8 cl-lightblue b7" id="popupPeople_title"></div>
+				</inner></box>
+				<box col="2" mob="2"><inner class="">
+					<!-- <div class="h9 cl-red-4">ลบทิ้ง</div> -->
+				</inner></box>
+			</theboxes>
+			<div class="t-left">
+				<sp class="l"></sp>
+				<theboxes class="top spacing-l -clip size-m cl-grey">
+					<box col="7" mob="7"><inner class="">
+						ชื่อรายการ
+					</inner></box>
+					<box col="2" mob="2"><inner class="t-right">
+						ราคา
+					</inner></box>
+					<box col="3" mob="3"><inner class="t-right">
+						จ่าย
+					</inner></box>
+				</theboxes>
+				<theboxes class="middle spacing -clip size-l cl-vblack" id="popupPeople_menu">
+				</theboxes>
+
+				
+				<sp class="l"></sp>
+				
+				<theboxes class="top spacing -clip size-m cl-grey">
+					<box col="8" mob="8"><inner class="">
+						<div class="h8 b7 cl-black " >ยอดรวม</div>
+					</inner></box>
+					<box col="4" mob="4"><inner class="t-right">
+						<div class="h8 b7 cl-black " id="popupPeople_amout">0</div>
+					</inner></box>
+				</theboxes>
+				<sp class="l"></sp>
+				<div class="btn t-center wide b7 bg-lightblue hover-bg-lightblue-6 " onclick="togglePopup('people','close')">
+					ตกลง
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="calculator">
+		<div class="popup bg-white">
+			<theboxes class="top -clip">
+				<box col="9.5" mob="9.5"><inner class="">
+					<theboxes class="top -clip t-center b7" boxing="3" mob="3">
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							7
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							8
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							9
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							4
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							5
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							6
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							1
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							2
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							3
+						</inner></box>
+						<box col="" onclick="calClear()"><inner class="calpad upper">
+							clear
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							0
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calBackspace()">
+							<i class="fas fa-backspace"></i>
+						</inner></box>
+					</theboxes>
+					<div class="size-l b7 t-center bg-lightgreen cl-white upper calpad" onclick="calSubmit()" id="calOk" >
+						ok
+					</div>
+				</inner></box>
+				<box col="2.5" mob="2.5"><inner id="cal_operator">
+					<div id="op_divide" onclick="calAddOp('/');"><i class="fas fa-divide"></i></div>
+					<div id="op_times" onclick="calAddOp('*');"><i class="fas fa-times"></i></div>
+					<div id="op_minus" onclick="calAddOp('-');"><i class="fas fa-minus"></i></div>
+					<div id="op_plus" onclick="calAddOp('+');"><i class="fas fa-plus"></i></div>
+					<div id="op_equals" onclick="calEq();"><i class="fas fa-equals"></i></div>
+
+				</inner></box>
+			</theboxes>
+		</div>
+	</div>
+	<script src="assets/function.js"></script>
+	 <!-- Histats.com  START  (aync)-->
+	<script type="text/javascript">var _Hasync= _Hasync|| [];
+	_Hasync.push(['Histats.start', '1,3807245,4,0,0,0,00010000']);
+	_Hasync.push(['Histats.fasi', '1']);
+	_Hasync.push(['Histats.track_hits', '']);
+	(function() {
+	var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+	hs.src = ('//s10.histats.com/js15_as.js');
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+	})();</script>
+	<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?3807245&101" alt="free hit counter" border="0"></a></noscript>
+	<!-- Histats.com  END  -->
+</body>
+</html>

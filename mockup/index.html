@@ -208,63 +208,6 @@
 				<theboxes class="top spacing -clip">
 					<box col="12" mob="12"><inner class="">
 						<input type="text" id="input_menuAmout" class="t-center ffont input wide cl-black bg-white size-xl" placeholder="ระบุราคา" onclick="toggleCalPanel('open')" readonly="readonly">
-						<div id="calculator">
-							<div class="popup bg-white">
-								<theboxes class="top -clip">
-									<box col="9.5" mob="9.5"><inner class="">
-										<theboxes class="top -clip t-center b7" boxing="3" mob="3">
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												7
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												8
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												9
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												4
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												5
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												6
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												1
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												2
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												3
-											</inner></box>
-											<box col="" onclick="calClear()"><inner class="calpad upper">
-												clear
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calInsert(this)">
-												0
-											</inner></box>
-											<box col=""><inner class="calpad" onclick="calBackspace()">
-												<i class="fas fa-backspace"></i>
-											</inner></box>
-										</theboxes>
-										<div class="size-l b7 t-center bg-lightgreen cl-white upper calpad" onclick="calSubmit()" id="calOk" >
-											ok
-										</div>
-									</inner></box>
-									<box col="2.5" mob="2.5"><inner id="cal_operator">
-										<div id="op_divide" onclick="calAddOp('/');"><i class="fas fa-divide"></i></div>
-										<div id="op_times" onclick="calAddOp('*');"><i class="fas fa-times"></i></div>
-										<div id="op_minus" onclick="calAddOp('-');"><i class="fas fa-minus"></i></div>
-										<div id="op_plus" onclick="calAddOp('+');"><i class="fas fa-plus"></i></div>
-										<div id="op_equals" onclick="calEq();"><i class="fas fa-equals"></i></div>
-
-									</inner></box>
-								</theboxes>
-							</div>
-						</div>
 					</inner></box>
 				</theboxes>
 				<sp class="m"></sp>
@@ -295,7 +238,7 @@
 			</div>
 			<sp class="rm"></sp>
 			<div class="btn t-center wide b7 bg-amber hover-bg-amber-6 " onclick="togglePopup('menu','close')">
-				ปิด
+				ตกลง
 			</div>
 		</div>
 	</div>
@@ -379,9 +322,68 @@
 				</theboxes>
 				<sp class="l"></sp>
 				<div class="btn t-center wide b7 bg-amber hover-bg-amber-6 " onclick="togglePopup('people','close')">
-					ปิด
+					ตกลง
 				</div>
 			</div>
+		</div>
+	</div>
+
+
+	<div id="calculator">
+		<div class="popup bg-white">
+			<theboxes class="top -clip">
+				<box col="9.5" mob="9.5"><inner class="">
+					<theboxes class="top -clip t-center b7" boxing="3" mob="3">
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							7
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							8
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							9
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							4
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							5
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							6
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							1
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							2
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							3
+						</inner></box>
+						<box col="" onclick="calClear()"><inner class="calpad upper">
+							clear
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calInsert(this)">
+							0
+						</inner></box>
+						<box col=""><inner class="calpad" onclick="calBackspace()">
+							<i class="fas fa-backspace"></i>
+						</inner></box>
+					</theboxes>
+					<div class="size-l b7 t-center bg-lightgreen cl-white upper calpad" onclick="calSubmit()" id="calOk" >
+						ok
+					</div>
+				</inner></box>
+				<box col="2.5" mob="2.5"><inner id="cal_operator">
+					<div id="op_divide" onclick="calAddOp('/');"><i class="fas fa-divide"></i></div>
+					<div id="op_times" onclick="calAddOp('*');"><i class="fas fa-times"></i></div>
+					<div id="op_minus" onclick="calAddOp('-');"><i class="fas fa-minus"></i></div>
+					<div id="op_plus" onclick="calAddOp('+');"><i class="fas fa-plus"></i></div>
+					<div id="op_equals" onclick="calEq();"><i class="fas fa-equals"></i></div>
+
+				</inner></box>
+			</theboxes>
 		</div>
 	</div>
 </body>
