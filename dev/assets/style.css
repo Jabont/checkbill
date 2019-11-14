@@ -1,0 +1,224 @@
+@font-face {
+	font-family: 'Maledpan';
+	src: url('maledpan-regular-webfont.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{
+	background-color: #03A9F4;
+	--mainHeight : unset;
+	--mainOverflow : unset;
+	--calHeight : 0px;
+	--popup_menu_wrap_bg : #fff;
+	/*margin-bottom: 56px;*/
+	overflow-x:unset;
+	-webkit-user-select: none;
+	/*-webkit-tap-highlight-color: transparent;*/
+	-webkit-touch-callout: none;
+}
+.can-select{
+	-webkit-user-select: text;
+	-webkit-tap-highlight-color: auto;
+	-webkit-touch-callout: auto;
+}
+body[popup="1"]{
+	--mainHeight : 100%;
+	--mainOverflow : hidden;
+}
+body[cal="1"]{
+	--calHeight : 250px;
+	--popup_menu_wrap_bg : #fff;
+}
+.ffont{
+	font-family: 'Maledpan' !important;
+}
+
+body[popup="1"] .disclaim{
+	display: none;
+}
+main{
+	margin:0 auto;
+	width: 100%;
+	max-width: 420px;
+	height: var(--mainHeight);
+	overflow: var(--mainOverflow);
+}
+.btn{
+	cursor: pointer;
+}
+.quick-add{
+	display: none;
+	position: fixed;
+	right: .5em;
+	bottom: .5em;
+	width: 2em;
+	line-height: 2em;
+	text-align: center;
+	color:white;
+	font-size: 1.5em;
+}
+#people{
+	display: none;
+}
+.popup{
+	max-width: 420px;
+	margin: auto;
+}
+body[popup="1"] .popupBg{
+	background: #0008;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.popupWrap{
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 500;
+	overflow: auto;
+	transition: height .2s;
+}
+#popup_menu{
+	height: calc(100% - var(--calHeight));
+
+}
+.popupWrap[show="1"]{
+	display: flex !important;
+}
+
+#popup_people{
+	height: 100%;
+}
+.popup_menu_wrap{
+	background-color: var(--popup_menu_wrap_bg);
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"] {
+	border: 0;
+	border-bottom: 1px solid #aaa;
+	border-radius: 0;
+	padding-left: 0em;
+	padding-right: 0em;
+}
+input::placeholder{
+	color:#ddd;
+}
+input:focus::placeholder{
+	color: transparent;
+}
+.people-list-wrap{
+	display: flex;
+	flex-flow: row wrap;
+}
+.people-list{
+	padding: .5em 1em;
+	border-radius: 5px;
+	background-color: #eee;
+	margin: .1em;
+	color: #666;
+}
+
+.people-list i::before{
+	content: "\f067";
+}  
+
+.people-list[pay="1"]{
+	background: hsl(var(--hue), 100%, 90%);
+	color: hsl(var(--hue), 80%, 40%);
+}
+
+.people-list[pay="1"] i::before{
+	content: "\f00c";
+}
+
+.menu-list i::before{
+	content: "\f067";
+} 
+.menu-list[pay="1"] i::before{
+	content: "\f00c";
+}  
+.menu-list{
+	color: #666;
+}
+.menu-list[pay="1"]{
+	color: #03A9F4;
+}
+
+.people-list i, .menu-list i {
+	width: 1em;
+	text-align: center;
+}
+input#input_menuAmout {
+	line-height: 0;
+	padding: 0;
+}
+#calculator {
+	transition: height .2s;
+	position: fixed;
+	height: var(--calHeight);
+	width: 100%;
+	left:0;
+	bottom: 0;
+	z-index: 1000;
+	background: #0008;
+}
+#calculator .popup{
+	box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.1),0px -1px 1px rgba(0,0,0,0.1)
+}
+#cal_operator{
+	display: flex;
+	flex-flow: row wrap;
+	text-align: center;
+}
+#cal_operator div{
+	width: 100%;
+	background: #0001;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#cal_operator div#op_equals{
+	background: #0002;
+}
+.calpad{
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#cal_operator div:active, .calpad:active{
+	background: #0003 !important;
+}
+
+.paid-label{
+	font-size: .8rem;
+	background: hsl(var(--hue), 100%, 90%);
+	color: hsl(var(--hue), 80%, 40%);
+	padding: .1em .5em .4em;
+	border-radius: 3px;
+	font-weight: bold;
+	margin-left: 1em;
+	display: none;
+}
+.people-main-list{
+	color: hsl(var(--hue), 80%, 40%);
+}
+.people-main-list[pay="1"] .paid-label{
+	display: inline-block;
+}
+.menu-pay-by .paid-label{
+	display: inline-block;
+	margin: .1em;
+}
+.qr{
+	max-width: 100%;
+	margin: auto;
+}
+.pointer{
+	cursor: pointer;
+}

@@ -531,8 +531,7 @@ function ready(){
 	if (localStorage.bill_menus != undefined) {
 		menus = JSON.parse(localStorage.bill_menus)
 	}
-	if (localStorage.bill_qr != 'undefined') {
-		console.log(localStorage.bill_qr);
+	if (localStorage.bill_qr != undefined) {
 		qr_label.innerText = localStorage.bill_qr;
 		qr_pic.src = `https://promptpay.io/${localStorage.bill_qr}.png`;
 	}
