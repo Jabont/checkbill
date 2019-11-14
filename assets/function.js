@@ -504,7 +504,7 @@ function addQr(){
 }
 
 function updateBillUrl(){
-	let host = `http://jabont.com/checkbill/?bill=`;
+	let host = `https://jabont.com/checkbill/?bill=`;
 	let data = encodeURIComponent(JSON.stringify([menus,peoples,qrID]));
 	bill_url.value = host+data;
 }
