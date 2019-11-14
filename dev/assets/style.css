@@ -6,7 +6,7 @@
 }
 
 body{
-	background-color: #03A9F4;
+	background-color: #191f25;
 	--mainHeight : unset;
 	--mainOverflow : unset;
 	--calHeight : 0px;
@@ -221,4 +221,24 @@ input#input_menuAmout {
 }
 .pointer{
 	cursor: pointer;
+}
+#bill_url{
+	width: 100%;
+	border-radius: 5px; 
+	border: 1px solid #999;
+	padding: 0em 3em 0em .7em;
+	font-size: .8em;
+}
+#bill_url_copy{
+	position: absolute;
+	right: 0;
+	top: .1em;
+	cursor: pointer;
+	line-height: 1.8em;
+	width: 2em;
+	text-align: center;
+	border-left: 1px solid #eee;
+}
+#bill_url_copy:active{
+	transform: scale(.9);
 }

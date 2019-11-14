@@ -9,6 +9,7 @@ let peopleSize = 0;
 let menuPrice = 0;
 let lastMenu = '';
 let lastPeople = '';
+let qrID = '';
 
 function arrayHave(arr,value){
 	if (arr.includes(value) != true) {
@@ -475,6 +476,7 @@ function renderAll(){
 	updatePeopleSize();
 	updatePeopleMenuList();
 	updatePeopleAmout();
+	updateBillUrl();
 }
 
 
@@ -491,18 +493,46 @@ function pNameToHue(pName){
 function addQr(){
 	let newSrc = prompt("ระบุเบอร์โทรศัพท์/เลขบัตรประชาชนที่ลงทะเบียน PrompPay");
 	if (newSrc === null || newSrc == '') {
-		qr_label.innerText = 'Add PrompPay';
-		qr_pic.src = `assets/qr.png`;
-		localStorage.bill_qr = undefined;
+		qrID = '';
 
 	}
 	else{
-		qr_label.innerText = newSrc;
-		qr_pic.src = `https://promptpay.io/${newSrc}.png`;
-		localStorage.bill_qr = newSrc;
+		qrID = newSrc;
 	}
+	localStorage.bill_qr = qrID;
+	updateQr();
 }
 
+function updateBillUrl(){
+	let host = `http://jabont.com/checkbill/dev/?bill=`;
+	let data = encodeURIComponent(JSON.stringify([menus,peoples,qrID]));
+	bill_url.value = host+data;
+}
+
+function copyBillUrl(){
+	bill_url.select();
+	bill_url.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+}
+
+function updateQr(){
+	if (qrID == '') {
+		qr_label.innerText = 'Add PrompPay';
+		qr_pic.src = `assets/qr.png`;
+
+	}
+	else{
+		qr_label.innerText = qrID;
+		qr_pic.src = `https://promptpay.io/${qrID}.png`;
+	}
+	updateBillUrl();
+}
+function getParam(param){
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var value = url.searchParams.get(param);
+	return value;
+}
 function clearCache(type){
 	if (confirm('คุณยืนยันการล้างหรือไม่')) {
 		if (type == 'menu') {
@@ -525,16 +555,29 @@ function updateCache(){
 }
 
 function ready(){
-	if (localStorage.bill_peoples != undefined) {
-		peoples = JSON.parse(localStorage.bill_peoples)
+	let data = getParam("bill");
+	if(data == null){
+		if (localStorage.bill_peoples != undefined) {
+			peoples = JSON.parse(localStorage.bill_peoples)
+		}
+		if (localStorage.bill_menus != undefined) {
+			menus = JSON.parse(localStorage.bill_menus)
+		}
+		if (localStorage.bill_qr != 'undefined') {
+			qrID = localStorage.bill_qr;
+		}
 	}
-	if (localStorage.bill_menus != undefined) {
-		menus = JSON.parse(localStorage.bill_menus)
+	else{
+		data = JSON.parse(data);
+		let data_menus = data[0];
+		let data_people = data[1];
+		let data_qrID = data[2];
+		peoples = data_people;
+		menus = data_menus;
+		qrID = data_qrID;
+		console.log(data);
 	}
-	if (localStorage.bill_qr != undefined) {
-		qr_label.innerText = localStorage.bill_qr;
-		qr_pic.src = `https://promptpay.io/${localStorage.bill_qr}.png`;
-	}
+	updateQr();
 	renderAll();
 }
 ready();
